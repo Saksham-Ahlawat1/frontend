@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>comapny card creator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="tel"], input[type="email"] {
+            width: 300px;
+            padding: 8px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .background {
+            background-color: blue;
+            padding: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>comapny card form <form action="click"></form> </h1>
+    <form action="create_card.php" method="post">
+        <label for="company_name">Company Name:</label><br>
+        <input type="text" id="company_name" name="company_name" required><br><br>
+
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address" required><br><br>
+
+        <label for="phone">Phone Number:</label><br>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <input type="submit" value="Create Card">
+    </form>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            alert('Company card created successfully!');
+        });
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Company card created successfully!');
+            // Collect form data
+            const companyName = document.getElementById('company_name').value;
+            const company = {
+        name: companyName,
+        motto: motto,
+        imageURL: URL.createObjectURL(imageFile)
+      };
+            console.log('Company Card Data:', company);
+        });
+        //dom manipulation example
+              const card = document.createElement("div");
+      card.className = "card";
+
+      const img = document.createElement("img");
+      img.src = company.imageURL;
+
+      const title = document.createElement("h3");
+      title.textContent = company.name;
+
+      const description = document.createElement("p");
+      description.textContent = company.motto;
+        card.appendChild(img);
+
+// <img src="company_logo.png" alt="Company Logo" width="100">
+      card.appendChild(title);  
+      card.appentchild(description); 
+        document.body.appendChild(card);
+
+        document.body.style.backgroundColor = "lightblue";
+        // Change form title
+        document.querySelector('h1').textContent = "Company Card Form";
+        
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Card Creator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #cards {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 250px;
+      text-align: center;
+      padding: 15px;
+    }
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .card h3 {
+      margin: 10px 0 5px;
+    }
+    .card p {
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Company Card Form</h2>
+  <form id="companyForm">
+    <input type="text" id="companyName" placeholder="Enter company name" required>
+    <input type="text" id="motto" placeholder="Enter company motto" required>
+    <input type="file" id="image" accept="image/*" required>
+    <button type="submit">Create Card</button>
+  </form>
+
+  <div id="cards"></div>
+
+  <script>
+    document.getElementById("companyForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // Get values from the form
+      const companyName = document.getElementById("companyName").value;
+      const motto = document.getElementById("motto").value;
+      const imageFile = document.getElementById("image").files[0];
+
+      // Create object to store data
+      const company = {
+        name: companyName,
+        motto: motto,
+        imageURL: URL.createObjectURL(imageFile)
+      };
+
+      // Create card using DOM
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const img = document.createElement("img");
+      img.src = company.imageURL;
+
+      const title = document.createElement("h3");
+      title.textContent = company.name;
+
+      const description = document.createElement("p");
+      description.textContent = company.motto;
+
+      // Append all to card
+      card.appendChild(img);
+      card.appendChild(title);
+      card.appendChild(description);
+
+      // Append card to container
+      document.getElementById("cards").appendChild(card);
+
+      // Reset the form
+      event.target.reset();
+    });
+  </script>
+
+</body>
+</html>

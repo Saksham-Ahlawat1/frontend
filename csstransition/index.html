@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition and transform</title>
+    <style>
+   .square{
+        height: 100px ; 
+       width: 100px ; 
+    background-color: red ; 
+
+     /* transform : translate(50px , 100px); */
+
+    transform : rotate(45 deg) ;
+    
+  transform: scale(3.5, 0.5);  /* Scale width by 3.5 and height by 0.5 */
+  transition: transform 2s; /* Animation lasts 2 seconds */ 
+
+
+
+}
+.square:hover{
+    background-color: blue ; 
+   /* transform : translate(200px , 300px); */
+   transform : rotate(90deg) ;
+   transform: scale(1, 1);  /* Scale width by 3.5 and height by 0.5 */
+
+    </style>
+    <body>
+        
+        </body>
